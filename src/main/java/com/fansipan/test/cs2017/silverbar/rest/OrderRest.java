@@ -69,10 +69,7 @@ public class OrderRest {
     @Path("/")
     @POST
     public void addOrder(
-            @ApiParam(
-                    value = "Order to Add",
-                    required = true,
-                    example = "{ 'userId': 'Thang', 'quantity': 1000, 'price': 50.2, 'type': 'SELL' }") Order order) {
+            @ApiParam(value = "Order to Add", required = true) Order order) {
         orderDao.addOrder(order);
     }
 
