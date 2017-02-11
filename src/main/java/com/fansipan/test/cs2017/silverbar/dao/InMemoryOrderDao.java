@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryOrderDao implements OrderDao {
-    private final static int DEFAULT_INITIAL_SIZE = 1000;
+    private static final int DEFAULT_INITIAL_SIZE = 1000;
 
     private final Set<Order> orders;
 
