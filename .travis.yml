@@ -1,7 +1,15 @@
 language: java
 jdk: oraclejdk8
 
-script: mvn test -B
+install: true
+addons:
+  sonarqube:
+    token:
+      secure: "sFHYWEcPzaEE+RVFVP6cxahkniSZ3lzgOnN0PhKXmxT5ebrxvvuB+E77hwj7G4cxeWaf679UWqbUd2ufh5dFS1b3L9ZD+DsgptKwb2OhXR7oZqdqShUEnY2jM7WIKcsNlBwjSZU+/mh3MmDW5KrPw/S2KkzmYa/nOB293d3jWKeAZ2NdFsnhKdJ4eKW9P6cBoTYOUV0QFVF5W61nIuSHxm1QCQXHgdWa8AJosqrbxJkUpBWhpoE9PE7FTmCkUTmKSntfjJIqSOlpyPkkMY2VpmltHjb42yRut+wFgcc+swBxcfcreVUP9qj5HHT1mLYC3n13qHj0mPfIbVFsNWjJJr7FEE61AJzYZL9B39LivNlzQrq8XrGglZW/CRFOPskuQ5o0EC4eai4eRyi2H0CMx45JzS7H1S2QB3dnuyJ76PtRoPL0VpEP1nIQZVexgdEPSiJRRQLx9A5uYVX8YjFvhYtwJ7Jg6lB/Ha745gudsJ7l5BfaLkzeWoAN3+wyAonIbh/cgZmfSM8NME7Fi44va2LMnkHOdmBFSjdqbv6e6dElc8KlvbP4ie7vhkUKwnZnCCnyuPeYttdH1bhIfeq0YqGWoGLQsJhy5l+gLzBkba+uQWI15GPFr7pfJyPJoLHUZFgW2YecA+wHhBXD/pX9ZSwb+B8jZ9Ob5lvULMXimjU="
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarQube analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 # Enable caching of dependencies
 cache:
